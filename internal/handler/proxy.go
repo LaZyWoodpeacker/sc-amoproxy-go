@@ -49,7 +49,6 @@ func New(c config.Config, a *auth.Validator, cl *client.Client, l *limiter.Limit
 }
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
-	log.Info().Msg(r.URL.Path)
 	id := r.Header.Get("X-Request-ID")
 	if id == "" {
 		id = fmt.Sprintf("%x", time.Now().UnixNano())
@@ -88,6 +87,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	claims, err := h.auth.Validate(r.Header.Get("Authorization"))
+	log.Warn().Interface("claims", claims).Err(err).Msg("Has climes")
 	if err != nil {
 		h.error(rw, 401, id, "unauthorized")
 		return
