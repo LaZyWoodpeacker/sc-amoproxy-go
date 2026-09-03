@@ -8,5 +8,5 @@ RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /proxy ./cmd/proxy
 FROM gcr.io/distroless/static-debian12:nonroot
 COPY --from=build /proxy /proxy
 USER nonroot:nonroot
-EXPOSE 8080
+# EXPOSE 8080
 ENTRYPOINT ["/proxy"]
