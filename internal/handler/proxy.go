@@ -48,6 +48,7 @@ func New(c config.Config, a *auth.Validator, cl *client.Client, l *limiter.Limit
 	return &Handler{c, a, cl, l, log}
 }
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	log.Warn().Msg("Check serve")
 	start := time.Now()
 	id := r.Header.Get("X-Request-ID")
 	if id == "" {
@@ -80,12 +81,14 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		h.error(rw, 405, id, "bad_request")
 		return
 	}
+	log.Warn().Msg("Check method")
 	switch r.Method {
 	case "GET", "POST", "PUT", "PATCH", "DELETE":
 	default:
 		h.error(rw, 405, id, "bad_request")
 		return
 	}
+	log.Warn().Msg("Check validate")
 	claims, err := h.auth.Validate(r.Header.Get("Authorization"))
 	log.Warn().Interface("claims", claims).Str("authorization", r.Header.Get("Authorization")).Err(err).Msg("Has climes")
 	if err != nil {
