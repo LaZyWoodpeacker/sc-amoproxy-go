@@ -7,8 +7,6 @@ import (
 	"regexp"
 	"strconv"
 	"time"
-
-	"github.com/rs/zerolog/log"
 )
 
 type Target struct {
@@ -31,9 +29,7 @@ type Config struct {
 }
 
 func Load() (Config, error) {
-
 	c := Config{Port: env("PORT", "8080"), LogLevel: env("LOG_LEVEL", "info"), BodyLimit: 10 << 20}
-	log.Info().Msg(env("PORT", "serv"))
 	var err error
 	c.Timeout, err = time.ParseDuration(env("REQUEST_TIMEOUT", "1s"))
 	if err != nil || c.Timeout <= 0 {

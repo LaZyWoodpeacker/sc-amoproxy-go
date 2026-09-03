@@ -19,7 +19,6 @@ import (
 
 func main() {
 	log := logging.New("debug")
-	log.Info().Msg("Test")
 	cfg, err := config.Load()
 	if err != nil {
 		log.Fatal().Err(err).Msg("invalid configuration")
