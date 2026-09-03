@@ -32,4 +32,17 @@ jobs:
             -t $IMAGE_NAME:latest \
             -t $IMAGE_NAME:$GITHUB_SHA .
           docker push $IMAGE_NAME --all-tags
+      - name: Deploy Serverless Container
+        id: deploy-sls-container
+        uses: yc-actions/yc-sls-container-deploy@v5
+        with:
+          yc-sa-id: ajegbbm8df1ogq00du1f
+          container-name: $APP_NAME
+          folder-id: b1gi7gh5bmam7ibes1f5
+          revision-cores: 1
+          revision-memory: 512Mb
+          revision-core-fraction: 100
+          revision-concurrency: 8
+          revision-image-url: $IMAGE_NAME:${{ github.sha }}
+          revision-execution-timeout: 10
 
