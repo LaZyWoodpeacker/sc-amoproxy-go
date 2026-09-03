@@ -2,7 +2,8 @@
 # Запрашивает параметры аккаунта amoCRM через локальный прокси для subdomain "timconsult".
 set -euo pipefail
 
-PROXY_URL="${PROXY_URL:-http://localhost:8080}"
+# PROXY_URL="${PROXY_URL:-http://localhost:8080}"
+PROXY_URL="https://bbar385mrh3njaif51dn.containers.yandexcloud.net"
 SUBDOMAIN="timconsult"
 JWT_ISSUER="${JWT_ISSUER:-local-debug}"
 JWT_AUDIENCE="${JWT_AUDIENCE:-local-debug}"
