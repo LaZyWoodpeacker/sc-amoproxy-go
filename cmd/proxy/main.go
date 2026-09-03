@@ -19,8 +19,9 @@ import (
 )
 
 func main() {
-	fmt.Print("TEST")
-	log := logging.New(os.Getenv("LOG_LEVEL"))
+	fmt.Printf("TEST %s %s", os.Getenv("PORT"), os.Getenv("LOG_LEVEL"))
+	// log := logging.New(os.Getenv("LOG_LEVEL"))
+	log := logging.New("debug")
 	log.Info().Msg("Test")
 	cfg, err := config.Load()
 	if err != nil {
