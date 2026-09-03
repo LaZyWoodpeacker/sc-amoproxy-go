@@ -50,3 +50,4 @@ jobs:
             JWT_ISSUER=iis
             JWT_AUDIENCE=aud
             LOCKBOX_SECRET_ID=e6qnvpm2mppmdfrgkk5m
+            RESTY_DEBUG=true
