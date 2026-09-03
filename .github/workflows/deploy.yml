@@ -33,10 +33,10 @@ jobs:
           docker push $IMAGE_NAME --all-tags
       - name: Deploy Serverless Container
         id: deploy-sls-container
-        uses: yc-actions/yc-sls-container-deploy@v5        
+        uses: yc-actions/yc-sls-container-deploy@v5
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_CR_IMAGES_PUSHER }}
-          container-name: ${{ github.event.repository.name }}          
+          container-name: ${{ github.event.repository.name }}
           folder-id: b1gi7gh5bmam7ibes1f5
           revision-service-account-id: ajegbbm8df1ogq00du1f
           revision-cores: 1
@@ -45,4 +45,7 @@ jobs:
           revision-concurrency: 1
           revision-image-url: ${{ env.IMAGE_NAME }}:${{ github.sha }}
           revision-execution-timeout: 10
-
+          revision-env: |
+            JWT_PUBLIC_KEY=-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+G6OCCak0iFVXwobKF+Q NjCqcUSDQpF7FfZeVhflkltyHfZsqWxcqkPi/2hO+pzIRdKNwd6Xt1Db/xa8kK93 vvxFqA/JUZNrwceQlgTreO7XBiJ/AJ0oHhTF+Waum8Wvm3dEgdKaBbql386sIHM+ dnJRnxRWxNvypRssKFO6cZ+A6C2IyhnyTjTreLuTqDNVwOFqDWv67+MRXNCRzdHn m1do3foCEoc28CEeOFw9RVSi9TIQEmSxltAXUe28aW47fhPFhsJrG5O1Fb0NTuV4 xxemiardiismmuKK5Pf+W7iqR7+s/tjnVCxaa5qYr2vpII9wQYvVHwQa6j3QzU3l cwIDAQAB -----END PUBLIC KEY-----
+            JWT_ISSUER=iis
+            JWT_AUDIENCE=aud
