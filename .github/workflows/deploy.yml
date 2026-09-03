@@ -20,9 +20,10 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-      - name: Copy file
+      - name: Copy pem file
         run: |
           echo "${{ secrets.JWT_PUBLIC_KEY_PEM }}" > key.pem
+          ls -l
       - name: Login to Docker Hub
         uses: yc-actions/yc-cr-login@v3
         with:
