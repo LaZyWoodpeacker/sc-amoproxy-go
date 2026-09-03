@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run proxy (debug)",
+      "type": "go",
+      "request": "launch",
+      "program": "${workspaceFolder}/cmd/proxy",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env.debug"
+    }
+  ]
+}
