@@ -36,7 +36,8 @@ jobs:
         uses: yc-actions/yc-sls-container-deploy@v5        
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_CR_IMAGES_PUSHER }}
-          container-name: ${{ github.event.repository.name }}
+          service_account_id: ajegbbm8df1ogq00du1f
+          container-name: ${{ github.event.repository.name }}          
           folder-id: b1gi7gh5bmam7ibes1f5
           revision-cores: 1
           revision-memory: 512Mb
