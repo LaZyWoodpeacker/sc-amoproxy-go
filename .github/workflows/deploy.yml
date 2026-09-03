@@ -49,3 +49,4 @@ jobs:
             JWT_PUBLIC_KEY=-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+G6OCCak0iFVXwobKF+Q NjCqcUSDQpF7FfZeVhflkltyHfZsqWxcqkPi/2hO+pzIRdKNwd6Xt1Db/xa8kK93 vvxFqA/JUZNrwceQlgTreO7XBiJ/AJ0oHhTF+Waum8Wvm3dEgdKaBbql386sIHM+ dnJRnxRWxNvypRssKFO6cZ+A6C2IyhnyTjTreLuTqDNVwOFqDWv67+MRXNCRzdHn m1do3foCEoc28CEeOFw9RVSi9TIQEmSxltAXUe28aW47fhPFhsJrG5O1Fb0NTuV4 xxemiardiismmuKK5Pf+W7iqR7+s/tjnVCxaa5qYr2vpII9wQYvVHwQa6j3QzU3l cwIDAQAB -----END PUBLIC KEY-----
             JWT_ISSUER=iis
             JWT_AUDIENCE=aud
+            LOCKBOX_SECRET_ID=e6qnvpm2mppmdfrgkk5m
