@@ -5,6 +5,11 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  APP_NAME: ${{ github.event.repository.name }}
+  IMAGE_NAME: 'cr.yandex/${{ secrets.CR_REGISTRY }}/${{ github.event.repository.name }}'
+  IMAGE_TAG: ${{ github.sha }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,13 +28,13 @@ jobs:
           yc-sa-json-credentials: ${{ secrets.YC_SA_CR_IMAGES_PUSHER }}
       - name: Build, tag, and push image to Yandex Cloud Container Registry
         env:
-          CR_REGISTRY: crp00000000000000000
-          CR_REPOSITORY: my-cr-repo
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker buildx build --pull \
             --build-arg GITHUB_SHA \
             --build-arg TAG \
-            -t ${{ github.event.repository.name }}:latest
-          docker push cr.yandex/$CR_REGISTRY/${{ github.event.repository.name }}:$IMAGE_TAG --all-tags
+            -t $IMAGE_NAME:$TAG \
+            -t $IMAGE_NAME:latest \
+            -t $IMAGE_NAME:$GITHUB_SHA .
+          docker push $IMAGE_NAME:$IMAGE_TAG --all-tags
 
