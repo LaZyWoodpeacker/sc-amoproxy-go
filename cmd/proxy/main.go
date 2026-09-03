@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -19,8 +18,6 @@ import (
 )
 
 func main() {
-	fmt.Printf("TEST %s %s", os.Getenv("PORT"), os.Getenv("LOG_LEVEL"))
-	// log := logging.New(os.Getenv("LOG_LEVEL"))
 	log := logging.New("debug")
 	log.Info().Msg("Test")
 	cfg, err := config.Load()
