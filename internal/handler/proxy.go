@@ -87,7 +87,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	claims, err := h.auth.Validate(r.Header.Get("Authorization"))
-	log.Warn().Interface("claims", claims).Err(err).Msg("Has climes")
+	log.Warn().Interface("claims", claims).Str("authorization", r.Header.Get("Authorization")).Err(err).Msg("Has climes")
 	if err != nil {
 		h.error(rw, 401, id, "unauthorized")
 		return

@@ -44,6 +44,10 @@ print((signing_input + b"." + b64url(result.stdout).encode()).decode())
 PY
 )
 
+echo "${PROXY_URL}/${SUBDOMAIN}/api/v4/account"
+
+echo $JWT
+
 curl -sS -i \
   -H "Authorization: Bearer ${JWT}" \
   "${PROXY_URL}/${SUBDOMAIN}/api/v4/account"
